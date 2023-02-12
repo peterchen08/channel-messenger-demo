@@ -1,0 +1,437 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "channel-messenger-project API Documentation",
+        "description": "channel接口文档",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "//localhost:3000"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/v1/channels": {
+            "get": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "Get all channels (auto generated)",
+                "description": "Get all channels",
+                "responses": {
+                    "200": {
+                        "description": "Channels result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "Create a channel (auto generated)",
+                "description": "Create a channel",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name to be used",
+                                        "default": "channel name"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create channel result",
+                        "content": {}
+                    },
+                    "422": {
+                        "description": "Missing parameters",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "params"
+            }
+        },
+        "/api/v1/channels/{id}": {
+            "get": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "Get channel by id (auto generated)",
+                "description": "Get channel by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of channel",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Channels result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "Update a channel (auto generated)",
+                "description": "Update channel.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of Channel",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of channel",
+                                        "default": "channel name"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "200": {
+                        "description": "Channel update result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    },
+                    "422": {
+                        "description": "Missing parameters",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "params"
+            },
+            "delete": {
+                "tags": [
+                    "Channels"
+                ],
+                "summary": "Delete a channel (auto generated)",
+                "description": "Delete channel by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of channel",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/api/v1/messages/listByChannel": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "list messages",
+                "description": "list messages in a channel and order by descending (pagination is a extra credit).",
+                "operationId": "listByChannel",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "channelId",
+                                    "page"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "channelId": {
+                                        "type": "string",
+                                        "description": "the channel id of message",
+                                        "default": ""
+                                    },
+                                    "page": {
+                                        "type": "number",
+                                        "description": "pagination",
+                                        "default": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "200": {
+                        "description": "List message result",
+                        "content": {}
+                    },
+                    "422": {
+                        "description": "Missing parameters",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "params"
+            }
+        },
+        "/api/v1/messages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get all messages (auto generated)",
+                "description": "Get all messages",
+                "responses": {
+                    "200": {
+                        "description": "Messages result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Create a message (auto generated)",
+                "description": "Create a message",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "channel"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "title of message",
+                                        "default": "message title"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "content of message",
+                                        "default": "message content"
+                                    },
+                                    "channel": {
+                                        "type": "string",
+                                        "description": "the channel of message to send",
+                                        "default": ""
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create message result",
+                        "content": {}
+                    },
+                    "422": {
+                        "description": "Missing parameters",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "params"
+            }
+        },
+        "/api/v1/messages/{id}": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get message by id (auto generated)",
+                "description": "Get message by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of message",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "messages result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Update a message (auto generated)",
+                "description": "Update message.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of message",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "content",
+                                    "chennel"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "title of message",
+                                        "default": "message tilte"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "content of message",
+                                        "default": "message content"
+                                    },
+                                    "channel": {
+                                        "type": "string",
+                                        "description": "the channel of message to send",
+                                        "default": null
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "200": {
+                        "description": "Message update result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    },
+                    "422": {
+                        "description": "Missing parameters",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "params"
+            },
+            "delete": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Delete a message (auto generated)",
+                "description": "Delete message by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of message",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete result",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "Server error",
+                        "content": {}
+                    }
+                }
+            }
+        }
+    },
+    "tags": []
+}
