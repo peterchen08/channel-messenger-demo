@@ -154,7 +154,6 @@ export default class MessageService extends MoleculerDBService<
 			query: {
 				channel:ctx.params.channelId
 			},
-			sort: ['-createdAt']
 		});
 			
 		const json = await this.transformDocuments(ctx, ctx.params, doc);
