@@ -88,7 +88,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"lodash": "^4.17.21",
 		"moleculer": "^0.14.23",
-		"moleculer-db": "^0.8.19",
+		"moleculer-db": "https://github.com/peterchen08/moleculer-db",
     "moleculer-db-adapter-mongo": "^0.4.15",
 		"moleculer-db-adapter-mongoose": "^0.8.14",
     "@ourparentcenter/moleculer-decorators-extended": "^1.1.1",
